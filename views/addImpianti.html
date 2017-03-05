@@ -5,8 +5,8 @@
   <div class="form-group">
     <label for="nome_impianto" class="col-sm-2 control-label">Nome Impianto:</label>
     <div class="col-sm-6">
-      <input class="form-control" id="nome_impianto"
-            ng-required="string" ng-model="impianti.nome_impianto" placeholder="Nome"/>
+      <input class="form-control" id="nome_impianto" required
+        ng-model="impianti.nome_impianto" placeholder="Nome"/>
     </div>
   </div>
 
@@ -14,8 +14,8 @@
     <label for="nome_impianto" class="col-sm-2 control-label">Indirizzo:</label>
     <div class="col-sm-6">
       <div id="locationField">
-         <input id="autocomplete" placeholder="Enter your address" class="form-control"
-            ng-required="string" ng-model="impianti.indirizzo" type="text"></input>
+         <input id="autocomplete" placeholder="Enter your address" class="form-control" required
+            ng-model="impianti.indirizzo" type="text"></input>
       </div>
       <table id="address">
         <tr>
