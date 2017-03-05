@@ -1,0 +1,71 @@
+<h1>Dashboard</h1>
+
+<table class="table" >
+  <caption class="lead">Personale</caption>
+  <tbody>
+    <tr class="personal_list" ng-repeat="personal in personale">
+      <td>{{personal.nome}}</td>
+      <td>{{personal.cognome}}</td>
+      <td>{{personal.email}}</td>
+      <td>{{personal.data_nascita}}</td>
+      <td>{{personal.ruolo}}</td>
+      <td id="impianti">{{ personal.impianto }}</td>
+      <td>
+        <a href="#/editPersonale/{{personal.$id}}" class="btn btn-small btn-primary">Edit</a>
+        <a class="btn-delete btn btn-small btn-danger" ng-click="openDialogPersonale()">Delete</a>
+      </td>
+      <td class="delete-personale">
+        <div class="delete_inner_cont">
+          <h3>Sicuro di volerlo eliminar?</h3>
+          <div class="buttons">
+            <button type="button" name="button" ng-click="removePersonale(personal.$id)">SI</button>
+            <button id="btn-not-delete" type="button" name="button" ng-click="closeDialogPersonale()">NO</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>
+    <a href="#/addPersonale" class="btn btn-success" role="button">Add New Product</a>
+</p>
+
+<table class="table" >
+  <caption class="lead">Impianti</caption>
+  <thead>
+    <tr>
+      <th>Nome Impianto</th>
+      <th>Indirizzo</th>
+      <th>Citta</th>
+      <th>CAP</th>
+      <th>Long</th>
+      <th>Latt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="impianto_list" ng-repeat="impianto in impianti">
+      <td>{{impianto.nome_impianto}}</td>
+      <td>{{impianto.indirizzo}}</td>
+      <td>{{impianto.citta}}</td>
+      <td>{{impianto.cap}}</td>
+      <td>{{impianto.long}}</td>
+      <td>{{impianto.latt}}</td>
+      <td>
+        <a href="#/editImpianti/{{impianto.$id}}" class="btn btn-small btn-primary">Edit</a>
+        <a class="btn-delete btn btn-small btn-danger" ng-click="openDialogImpianti()">Delete</a>
+      </td>
+      <td class="delete-impianti">
+        <div class="delete_inner_cont">
+          <h3>Sicuro di volerlo eliminar?</h3>
+          <div class="buttons">
+            <button type="button" name="button" ng-click="removeImpianti(impianto.$id)">SI</button>
+            <button id="btn-not-delete" type="button" name="button" ng-click="closeDialogImpianti()">NO</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>
+    <a href="#/addImpianti" class="btn btn-success" role="button">Add New Product</a>
+</p>

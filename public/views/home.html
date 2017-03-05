@@ -1,0 +1,13 @@
+<h1>Vezzaro Impianti INC</h1>
+
+<h2>Presenti in Italia da 50 Anni!</h2>
+
+<h4>Conosci le nostre filiali:</h4>
+
+<div class="outer-container" ng-controller="HomeController">
+    <div id="map"></div>
+    <div id="repeat" ng-repeat="marker in markers | orderBy : 'title'">
+         <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)">
+         <label id="names" >{{marker.title}}</label></a>
+    </div>
+</div>

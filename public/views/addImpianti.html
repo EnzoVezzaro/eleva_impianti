@@ -1,0 +1,93 @@
+<h1>Add Impianti</h1>
+
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="nome_impianto" class="col-sm-2 control-label">Nome Impianto:</label>
+    <div class="col-sm-6">
+      <input class="form-control" id="nome_impianto"
+            ng-required="string" ng-model="impianti.nome_impianto" placeholder="Nome"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="nome_impianto" class="col-sm-2 control-label">Indirizzo:</label>
+    <div class="col-sm-6">
+      <div id="locationField">
+         <input id="autocomplete" placeholder="Enter your address" class="form-control"
+            ng-required="string" ng-model="impianti.indirizzo" type="text"></input>
+      </div>
+      <table id="address">
+        <tr>
+          <td class="label">Indirizzo Impianto</td>
+          <td class="slimField"><input disabled class="field" id="street_number"
+            ng-model="impianti.street_number" ></input></td>
+          <td class="wideField" colspan="2"><input disabled class="field" id="route"
+              ></input></td>
+        </tr>
+        <tr>
+          <td class="label">Citta</td>
+          <!-- Note: Selection of address components in this example is typical.
+               You may need to adjust it for the locations relevant to your app. See
+               https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+          -->
+          <td class="wideField" colspan="3"><input disabled class="field" id="locality"
+            ng-model="impianti.citta"></input></td>
+        </tr>
+        <tr>
+          <td class="label">Regione</td>
+          <td class="slimField"><input disabled class="field"
+            ng-model="impianti.regione" id="administrative_area_level_1"></input></td>
+          <td class="label">CAP</td>
+          <td class="wideField"><input disabled class="field" id="postal_code"
+            ng-model="impianti.cap" ng-model="impianti.cap"></input></td>
+        </tr>
+        <tr>
+          <td class="label">Country</td>
+          <td class="wideField" colspan="3"><input disabled class="field"
+              ng-model="impianti.paese"  id="country" ></input></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+   <div class="form-group">
+     <label for="mappa" class="col-sm-2 control-label">Mappa:</label>
+     <div class="col-sm-6">
+       <div class="pac-card" id="pac-card">
+         <div class="pac-card" id="pac-card">
+           <div ng-controller="AddControllerImpianti">
+             <div id="map"></div>
+             <div id="repeat" ng-repeat="marker in markers | orderBy : 'title'">
+                  <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)">
+                  <label id="names" >{{marker.title}}</label></a>
+             </div>
+           </div>
+           </div>
+     </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="latt" class="col-sm-2 control-label">Latt:</label>
+    <div class="col-sm-6">
+      <input class="form-control" disabled id="latt" type="text"
+             ng-model="impianti.latt" placeholder="26.100"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="impianto" class="col-sm-2 control-label">Long:</label>
+    <div class="col-sm-6">
+      <input class="form-control" disabled id="long" type="text"
+            ng-required="string" ng-model="impianti.long" placeholder="26.100"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <a ng-click="addImpianto()" class="btn btn-small btn-primary">Add</a>
+    </div>
+  </div>
+</form>
