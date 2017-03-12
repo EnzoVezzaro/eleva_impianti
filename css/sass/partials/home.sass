@@ -1,3 +1,73 @@
 .outer-container
   margin-top: 30px
   margin-bottom: 50px
+
+.arrow_box_down
+  z-index: 2
+  padding-bottom: 30px
+  padding-top: 20px
+  margin-bottom: -30px
+  position: relative
+  background: white
+  border: 1px
+  border-radius: 2px
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  &:after, &:before
+    top: 100%
+    left: 45%
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+  &:after
+    border-color: rgba(136, 183, 213, 0)
+    border-top-color: white
+    border-width: 10px
+    margin-left: 42px
+  &:before
+    border-top-color: rgba(0,0,0,0.15)
+    border-width: 12px
+    margin-left: 40px
+
+.arrow_box_up
+  margin-top: -50px
+  padding-bottom: 20px
+  padding-top: 20px
+  position: relative
+  background: white
+  border: 1px
+  border-radius: 2px
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  &:after, &:before
+    bottom: 100%
+    left: 45%
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+  &:after
+    border-color: rgba(136, 183, 213, 0)
+    border-bottom-color: white
+    border-width: 10px
+    margin-left: 42px
+  &:before
+    border-bottom-color: rgba(0,0,0,0.15)
+    border-width: 12px
+    margin-left: 40px
+
+
+#map
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75)
+
+.text-home
+  text-align: center

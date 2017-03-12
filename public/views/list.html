@@ -12,9 +12,9 @@
       <td id="impianti">{{ personal.impianto }}</td>
       <td>
         <a href="#/editPersonale/{{personal.$id}}" class="btn btn-small btn-primary">Edit</a>
-        <a class="btn-delete btn btn-small btn-danger" ng-click="openDialogPersonale()">Delete</a>
+        <a class="btn-delete btn btn-small btn-danger" ng-click="removePersonale(personal.$id)">Delete</a>
       </td>
-      <td class="delete-personale">
+      <!-- <td class="delete-personale">
         <div class="delete_inner_cont">
           <h3>Sicuro di volerlo eliminar?</h3>
           <div class="buttons">
@@ -22,7 +22,7 @@
             <button id="btn-not-delete" type="button" name="button" ng-click="closeDialogPersonale()">NO</button>
           </div>
         </div>
-      </td>
+      </td> -->
     </tr>
   </tbody>
 </table>
@@ -52,9 +52,9 @@
       <td>{{impianto.latt}}</td>
       <td>
         <a href="#/editImpianti/{{impianto.$id}}" class="btn btn-small btn-primary">Edit</a>
-        <a class="btn-delete btn btn-small btn-danger" ng-click="openDialogImpianti()">Delete</a>
+        <a class="btn-delete btn btn-small btn-danger" ng-click="removeImpianti(impianto.$id)">Delete</a>
       </td>
-      <td class="delete-impianti">
+      <!-- <td class="delete-impianti">
         <div class="delete_inner_cont">
           <h3>Sicuro di volerlo eliminar?</h3>
           <div class="buttons">
@@ -62,7 +62,7 @@
             <button id="btn-not-delete" type="button" name="button" ng-click="closeDialogImpianti()">NO</button>
           </div>
         </div>
-      </td>
+      </td> -->
     </tr>
   </tbody>
 </table>

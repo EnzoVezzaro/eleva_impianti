@@ -5,7 +5,7 @@
     <label for="nome" class="col-sm-2 control-label">Nome:</label>
     <div class="col-sm-4">
       <input class="form-control" id="nome"
-            ng-model="personal.nome" placeholder="Nome" requied/>
+        ng-model="personal.nome" placeholder="Nome" requied/>
     </div>
   </div>
 
@@ -46,7 +46,7 @@
     <div class="col-sm-4 impianti_checkbox">
       <span ng-repeat="impianto in impianti">
          <label class="checkbox" for="{{impianto.nome_impianto}}" id="{{ impianto.nome_impianto }}">
-           <input class="form_control" type="checkbox" value="{{impianto.nome_impianto}}" ng-model="personal.impianto[ impianto.nome_impianto ]" name="impianto" id="{{impianto.id}}"/>
+           <input id="checkboxes_impianti" class="form_control" type="checkbox" value="{{impianto.nome_impianto}}" ng-model="personal.impianto[ impianto.nome_impianto ]" name="impianti_checkbox" id="{{impianto.id}}"/>
             {{ impianto.nome_impianto }}
          </label>
        </span>

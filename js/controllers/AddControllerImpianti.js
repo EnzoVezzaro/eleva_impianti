@@ -5,27 +5,20 @@ function($scope, $firebaseArray, $location){
     var impiantiSelected = new Firebase("https://eleva-7c284.firebaseio.com/impianti/");
     var impianti = $firebaseArray(impiantiSelected);
 
+    var nome_impianto = $scope.impianti.nome_impianto;
+    var nome_impianto_formatted = nome_impianto.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&\;\:\'\"])/g, " ");
     var indirizzo = $("#autocomplete").val();
-    console.log(indirizzo);
     var street_number =  $("#street_number").val();
-    console.log(street_number);
     var route =  $("#route").val();
-    console.log(route);
     var citta =  $("#locality").val();
-    console.log(citta);
     var regione =  $("#administrative_area_level_1").val();
-    console.log(regione);
     var cap =  $("#postal_code").val();
-    console.log(cap);
     var paese = $('#country').val();
-    console.log(paese);
     var latt =  $("#latt").val();
-    console.log(latt);
     var long =  $("#long").val();
-    console.log(long);
 
     impianti.$add({
-      nome_impianto: $scope.impianti.nome_impianto,
+      nome_impianto: nome_impianto_formatted,
       indirizzo: indirizzo,
       street_number: street_number,
       route: route,
@@ -61,15 +54,30 @@ function($scope, $firebaseArray, $location){
           map: $scope.map,
           animation: google.maps.Animation.DROP,
           position: new google.maps.LatLng(info.latt, info.long),
-          title: info.nome_impianto
+          nome: info.nome_impianto,
+          indirizzo: info.indirizzo,
+          street_number: info.street_number,
+          route: info.route,
+          citta: info.citta,
+          regione: info.regione,
+          cap: info.cap,
+          paese: info.paese
       });
 
       marker.content = info.latt + ' E,' + info.long +  ' N, </div>';
 
       google.maps.event.addListener(marker, 'click', function(){
-          infoWindow.setContent('<h2>' + marker.title + '</h2>' +
-            marker.content);
+          infoWindow.setContent('<h2>' + marker.nome + '</h2>' + marker.indirizzo);
           infoWindow.open($scope.map, marker);
+
+          document.getElementById("nome_impianto").value = marker.nome;
+          document.getElementById("autocomplete").value = marker.indirizzo;
+          document.getElementById("street_number").value = marker.street_number;
+          document.getElementById("route").value = marker.route;
+          document.getElementById("locality").value = marker.citta;
+          document.getElementById("administrative_area_level_1").value = marker.regione;
+          document.getElementById("postal_code").value = marker.cap;
+          document.getElementById("country").value = marker.paese;
 
       });
 

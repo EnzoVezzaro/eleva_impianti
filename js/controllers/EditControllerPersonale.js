@@ -11,15 +11,28 @@ app.controller('EditControllerPersonale', ['$scope','$location', '$routeParams',
 
     $scope.editPersonale = function() {
 
-      console.log($scope.personal.impianto);
+      var obj = $scope.personal.impiantoCheckBox;
 
-      $scope.personal.$save({
+      var keys = Object.keys(obj);
+
+      var filtered = keys.filter(function(key) {
+          return obj[key]
+      });
+
+      var array = $.map(filtered, function(value, index) {
+          return [value];
+      });
+
+      var impiantoFormatted = array.join(" - ");
+
+      refEdit.update({
         nome: $scope.personal.nome,
         cognome: $scope.personal.cognome,
         email: $scope.personal.email,
         data_nascita : $scope.personal.data_nascita,
         ruolo: $scope.personal.ruolo,
-        impianto: $scope.personal.impianto
+        impianto: impiantoFormatted,
+        impiantoCheckBox: $scope.personal.impiantoCheckBox
       });
 
       $scope.edit_form.$setPristine();

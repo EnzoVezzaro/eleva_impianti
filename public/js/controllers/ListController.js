@@ -10,16 +10,16 @@ app.controller('ListController', ['$scope', '$firebaseArray', '$firebaseObject',
     $scope.removePersonale = function(id) {
       console.log(id);
       var ref = new Firebase("https://eleva-7c284.firebaseio.com/personale/" + id);
-      var personale = $firebaseObject(ref);
-      personale.$remove();
-      $scope.closeDialogPersonale();
+      var personal = $firebaseObject(ref);
+      personal.$remove();
+      // $scope.closeDialogPersonale();
     };
 
      $scope.removeImpianti = function(id) {
        var ref = new Firebase("https://eleva-7c284.firebaseio.com/impianti/" + id);
        var impiantiRem = $firebaseObject(ref);
        impiantiRem.$remove();
-       $scope.closeDialogImpianti();
+      //  $scope.closeDialogImpianti();
     };
 
     $scope.openDialogPersonale = function() {
