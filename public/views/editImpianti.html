@@ -1,7 +1,7 @@
 <h1>Edit Impianti</h1>
 
 
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" name="editImpianti">
   <div class="form-group">
     <label for="nome_impianto" class="col-sm-2 control-label">Nome Impianto:</label>
     <div class="col-sm-6">
@@ -14,23 +14,23 @@
     <label for="nome_impianto" class="col-sm-2 control-label">Indirizzo:</label>
     <div class="col-sm-6">
       <div id="locationField">
-         <input id="autocomplete" placeholder="Enter your address" class="form-control"
+         <input id="autocomplete" placeholder="Enter your address" class="form-control" ng-change="expression" onfocus="this.value = '';"
             ng-required="string" ng-model="impianti.indirizzo" type="text"></input>
       </div>
       <table id="address">
         <tr>
           <td class="label">Indirizzo Impianto</td>
-          <td class="slimField"><input class="field" id="street_number"
-            ng-model="impianti.street_number"  disabled="true"></input></td>
-          <td class="wideField" colspan="2"><input class="field" id="route"
-                disabled="true"></input></td>
+          <td class="slimField">
+            <input class="field" id="street_number"
+            ng-model="impianti.street_number"  disabled="true"></input>
+          </td>
+          <td class="wideField" colspan="2">
+            <input class="field" id="route"
+            ng-model="impianti.route" disabled="true"></input>
+              </td>
         </tr>
         <tr>
           <td class="label">Citta</td>
-          <!-- Note: Selection of address components in this example is typical.
-               You may need to adjust it for the locations relevant to your app. See
-               https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-          -->
           <td class="wideField" colspan="3"><input class="field" id="locality"
             ng-model="impianti.citta"  disabled="true"></input></td>
         </tr>
@@ -87,7 +87,7 @@
   <div class="form-group">
 
     <div class="col-sm-offset-2 col-sm-10">
-      <a ng-click="editImpianto()" class="btn btn-small btn-primary">Add</a>
+      <a ng-click="editImpianto()" class="btn btn-small btn-primary">Save</a>
     </div>
   </div>
 </form>

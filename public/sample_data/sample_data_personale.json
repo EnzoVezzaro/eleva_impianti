@@ -1,0 +1,20 @@
+{
+  "personale" : {
+    "id" : {
+      "nome" : "Enzo",
+      "cognome" : "Vezzaro",
+      "email" : "enzo-vezzaro@live.it",
+      "data_nascita" : "16/01/1990",
+      "ruolo" : "Web Designer",
+      "impianto" : "Impianti"
+    }
+  },
+  "impianti" : {
+    "nome_impianto" : "Esempio",
+    "indirizzo" : "Via Gioberti, 44",
+    "citta" : "Vicenza",
+    "cap" : "36100",
+    "long" : "26.100",
+    "latt" : "26.100"
+  }
+}

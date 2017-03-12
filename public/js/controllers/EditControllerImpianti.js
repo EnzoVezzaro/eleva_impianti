@@ -1,4 +1,4 @@
-app.controller('EditControllerImpianti', ['$scope','$location', '$routeParams', '$firebaseObject', '$firebaseArray',
+app.controller('EditControllerImpianti', ['$scope','$location', '$routeParams', '$firebaseObject', "$firebaseArray",
   function($scope, $location, $routeParams, $firebaseObject,$firebaseArray){
 
     var impiantiB = new Firebase("https://eleva-7c284.firebaseio.com/impianti/");
@@ -7,29 +7,26 @@ app.controller('EditControllerImpianti', ['$scope','$location', '$routeParams', 
     var impiantiID = new Firebase("https://eleva-7c284.firebaseio.com/impianti/" + $routeParams.id );
     $scope.impianti = $firebaseObject(impiantiID);
 
+    console.log($scope.impianti);
+
+
     $scope.editImpianto = function() {
 
+      var nome_impianto = $("#nome_impianto").val();
+      var nome_impianto_formatted = nome_impianto.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&\;\:\'\"])/g, " ");
       var indirizzo = $("#autocomplete").val();
-      console.log(indirizzo);
       var street_number =  $("#street_number").val();
-      console.log(street_number);
       var route =  $("#route").val();
-      console.log(route);
       var citta =  $("#locality").val();
-      console.log(citta);
       var regione =  $("#administrative_area_level_1").val();
-      console.log(regione);
       var cap =  $("#postal_code").val();
-      console.log(cap);
       var paese = $('#country').val();
-      console.log(paese);
       var latt =  $("#latt").val();
-      console.log(latt);
       var long =  $("#long").val();
-      console.log(long);
 
-      $scope.impianti.$save({
-        nome_impianto: $scope.impianti.nome_impianto,
+
+      impiantiID.update({
+        nome_impianto: nome_impianto_formatted,
         indirizzo: indirizzo,
         street_number: street_number,
         route: route,
@@ -41,8 +38,10 @@ app.controller('EditControllerImpianti', ['$scope','$location', '$routeParams', 
         latt: latt
       });
 
-      // $scope.edit_form.$setPristine();
+      $scope.editImpianti.$setPristine();
+
       $scope.impianti = {};
+
       $location.path('/dashboard');
 
     };
@@ -139,6 +138,8 @@ app.controller('EditControllerImpianti', ['$scope','$location', '$routeParams', 
       document.getElementById("latt").value = (place.geometry.location.lat()).toFixed(3);
       document.getElementById("long").value = (place.geometry.location.lng()).toFixed(3);
 
+      $scope.impianti.indirizzo = document.getElementById("autocomplete").value;
+      console.log($scope.impianti.indirizzo);
 
       for (var component in componentForm) {
         document.getElementById(component).value = '';
