@@ -14,7 +14,7 @@ body {
   margin-top: 1px; }
 
 #navbar {
-  margin-left: 80%; }
+  margin-left: 83%; }
 
 nav li a {
   color: #770404 !important;
@@ -277,3 +277,27 @@ nav li a {
   padding-left: 20px;
   margin-top: 20px;
   margin-bottom: 50px; }
+
+@media screen and (max-device-width: 480px) {
+  #navbar {
+    margin: 0; }
+  .container {
+    width: 100%; }
+  .btn_dashboard {
+    margin-left: 84% !important; }
+  #impiantiList {
+    width: 20%; } }
+
+@media screen and (min-device-width: 481px) and (max-device-width: 960px) {
+  #navbar {
+    margin-left: 79%; }
+  .container {
+    width: 100%; }
+  .btn_dashboard {
+    margin-left: 84% !important; }
+  #impiantiList {
+    width: 20%; } }
+
+@media screen and (min-device-width: 961px) {
+  #impiantiList {
+    width: 20%; } }

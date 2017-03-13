@@ -19,7 +19,7 @@ app.controller('HomeController', ['$scope', '$firebaseObject', '$firebaseArray',
 
   var infoWindow = new google.maps.InfoWindow();
 
-  var createMarker = function (impiantiLoop, personaleList){
+  var createMarker = function (impiantiLoop, personaleSelectedLoop){
 
       var marker = new google.maps.Marker({
           map: $scope.map,
@@ -27,7 +27,9 @@ app.controller('HomeController', ['$scope', '$firebaseObject', '$firebaseArray',
           position: new google.maps.LatLng(impiantiLoop.latt, impiantiLoop.long),
           title: impiantiLoop.nome_impianto + " "
       });
-      marker.content = impiantiLoop.route + ", " + impiantiLoop.street_number + " - " + impiantiLoop.citta + ", " + impiantiLoop.regione;
+
+      marker.content = impiantiLoop.route + ", " + impiantiLoop.street_number + " - " + impiantiLoop.citta + ", " + impiantiLoop.regione + ". " + '<div class=\'personaleList\'>' + '<div class=\'personale_caption\'>' + '<h5>Personale Disponibile</h5>' + '</div>' + '<ul>' + personaleSelectedLoop  + '</ul>' + '</div>';
+      marker.subtitle = "Personale";
 
       google.maps.event.addListener(marker, 'click', function(){
           infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
@@ -40,52 +42,58 @@ app.controller('HomeController', ['$scope', '$firebaseObject', '$firebaseArray',
 
   impianti.$loaded()
     .then(function(impianti) {
-      personale.$loaded()
-        .then(function(personale) {
 
-          var impiantiCount = impianti.length;
+      var impiantiCount = impianti.length;
 
-          for (i = 0; i < impiantiCount; i++){
+      for (i = 0; i < impiantiCount; i++){
 
-            var impiantiLoop = impianti[i];
+        var impiantiLoop = impianti[i];
 
-            var personaleCount = personale.length;
+        var personaleSelectedLoop = createList(impiantiLoop, personaleSelectedLoop);
 
-            for (e = 0; e < personaleCount; e++){
 
-              var personaleL = new Firebase("https://eleva-7c284.firebaseio.com/personale/");
-              var personale = $firebaseArray(personaleL);
-
-              var personaleArray = personale;
-
-              console.log(personaleArray);
-
-              // var personaleLoop = personale[e].impiantoCheckBox;
-              //
-              // for (var key in personaleLoop){
-              //
-              //   if (key == impianti[i].nome_impianto){
-              //     var personaleList = personale[i].nome + " " + personale[i].cognome;
-              //     var personaleListArray = personaleList;
-              //
-              //     console.log(key);
-              //     console.log(impianti[i].nome_impianto);
-              //     console.log(personaleListArray);
-              //   };
-              //
-              // };
-
-            };
-
-            // createMarker(impiantiLoop, personaleList);
-            createMarker(impiantiLoop);
-
-          };
-
-      });
-
+      };
 
   });
+
+  function createList(impiantiLoop, personaleSelectedLoop) {
+
+      var personaleSelectedLoop = "";
+
+      var personaleCount = personale.length;
+
+      console.log(personaleCount);
+
+      for (e = 0; e < personaleCount; e++){
+
+        var personaleLoop = personale[e].impiantoCheckBox;
+
+        console.log(personale[e].nome);
+
+        for (var key in personaleLoop){
+
+          console.log(key);
+          console.log(impiantiLoop.nome_impianto);
+
+          if (key == impiantiLoop.nome_impianto){
+            console.log("bingo!");
+            personaleSelectedLoop = personaleSelectedLoop + '<li>' + personale[e].nome + " " + personale[e].cognome + '</li>';
+            console.log(personaleSelectedLoop);
+
+            createMarker(impiantiLoop, personaleSelectedLoop);
+
+          }
+
+        };
+
+      };
+
+      console.log(impiantiLoop);
+
+
+  };
+
+
 
 
 
